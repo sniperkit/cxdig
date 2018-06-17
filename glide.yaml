@@ -1,0 +1,13 @@
+package: github.com/sniperkit/cxdig/pkg
+import:
+- package: github.com/fatih/color
+- package: github.com/gosuri/uiprogress
+- package: github.com/mattn/go-colorable
+- package: github.com/pkg/errors
+- package: github.com/sirupsen/logrus
+- package: github.com/spf13/cobra
+testImport:
+- package: github.com/stretchr/testify
+  subpackages:
+  - assert
+  - require
