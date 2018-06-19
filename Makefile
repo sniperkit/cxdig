@@ -1,4 +1,4 @@
-.PHONY: all test clean man glide fast release install
+.PHONY: all test clean man glide fast release install version build
 
 GO15VENDOREXPERIMENT=1
 
@@ -7,19 +7,19 @@ PROG_NAME := "cxdig"
 all: deps test build install version
 
 build: deps
-	@go build -ldflags "-X main.VERSION=`cat VERSION`" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
+	@go build -ldflags "-X github.com/sniperkit/cxdig/pkg/cmd.softwareVersion=`cat VERSION`" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
 
-version: deps
+version:
 	@which $(PROG_NAME)
-	@$(PROG_NAME) --version
+	@$(PROG_NAME) version
 
 install: deps
-	@go install -ldflags "-X main.VERSION=`cat VERSION`" ./cmd/$(PROG_NAME)
-	@$(PROG_NAME) --version
+	@go install -ldflags "-X github.com/sniperkit/cxdig/pkg/cmd.softwareVersion=`cat VERSION`" ./cmd/$(PROG_NAME)
+	@$(PROG_NAME) version
 
 fast: deps
-	@go build -i -ldflags "-X main.VERSION=`cat VERSION`-dev" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
-	@$(PROG_NAME) --version
+	@go build -i -ldflags "-X github.com/sniperkit/cxdig/pkg/cmd.softwareVersion=`cat VERSION`-dev" -o ./bin/$(PROG_NAME) ./cmd/$(PROG_NAME)/*.go
+	@$(PROG_NAME) version
 
 deps:
 	@glide install --strip-vendor

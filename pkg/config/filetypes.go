@@ -59,7 +59,7 @@ const defaultFileTypes = `
     {
         "language":"hunter",
         "type":"BuildSystem",
-        "fileNames":["huntergate.cmake", "hunter.cmake"]
+        "fileNames":["huntergate.cmake", "HunterGate.cmake", "hunter.cmake"]
     },
     {
         "language":"cget",
